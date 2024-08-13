@@ -45,8 +45,8 @@ Note: only the most recently generated image will be saved. If you generate mult
 
 ## Dependencies
 - [@inquirer/prompts](https://www.npmjs.com/package/inquirer): Used to prompt the user for input via the command line.
-- qr-image: Used to generate QR code images.
-- fs: Node.js native module for file system operations.
+- [qr-image](https://www.npmjs.com/package/qr-image): Used to generate QR code images.
+- [fs](https://nodejs.org/api/fs.html): Node.js native module for file system operations.
 
 ## Contributing
 If you'd like to contribute to this project, please fork the repository, create a new branch for your feature or bug fix, and submit a pull request.
