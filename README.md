@@ -17,14 +17,12 @@ The application allows users to input a URL via the command line, saves the URL 
 
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/andrefmonteiro/qr-code-generator.git
-
+    ```bash
+    git clone https://github.com/andrefmonteiro/qr-code-generator.git
 2. Navigate to the project directory:
 
    ```bash
    cd qr-code-generator
-
 3. Install the required dependencies:
 
    ```bash
@@ -34,14 +32,15 @@ The application allows users to input a URL via the command line, saves the URL 
 
    ```bash
      node index.js
-
 2. When prompted, enter the URL you want to generate a QR code for.
 
 3. The URL will be saved to user-input-history.txt.
 
-3. A QR code image will be generated and saved as qr-code.png in the project directory.
-Note: only the most recently generated image will be saved. If you generate multiple images, they will be overriden by the most recent one.
+4. A QR code image will be generated and saved in the `generated-qr-codes` directory.
 
+5. The application loops and you can generate more QR codes.
+
+:warning: **Note:** If you stop the application, be minfdful that when you re-run it, the newly generated QR Codes will replace the previously generated ones (it will substitute on the same file name). Please save a copy of those files, should you wish to keep them. We're working on features that save your previously generated QR codes, whent the application is re-run.
 
 ## Dependencies
 - [@inquirer/prompts](https://www.npmjs.com/package/inquirer): Used to prompt the user for input via the command line.
