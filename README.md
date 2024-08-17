@@ -1,6 +1,6 @@
 # QR Code Generator
 
-This is a simple QR Code Generator built with Node.js.
+CLI tool to generate and save QR codes as `.png` files.
 The application allows users to input a URL via the command line, saves the URL to a text file, and generates a QR code image (in PNG format) from the URL.
 
 ## Features
