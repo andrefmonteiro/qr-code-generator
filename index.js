@@ -1,11 +1,13 @@
 import { input } from "@inquirer/prompts";
-import * as fs from "fs";
-import * as qr from "qr-image";
+import { appendFile, createWriteStream } from "fs";
+import { image as qrImage } from "qr-image";
 
-async function main() {
+let qrCodeCounter = 1;
+
+while (true) {
      const userInputLink = await getUserInput();
-     saveUserInputToFile(userInputLink);
-     createQRCode(userInputLink);
+     await saveUserLinkToFile(userInputLink, "user-input-history.txt");
+     await createQRCode(userInputLink);
 }
 
 async function getUserInput() {
@@ -14,21 +16,28 @@ async function getUserInput() {
      })
 }
 
-function saveUserInputToFile(input) {
-     fs.appendFile("user-input-history.txt", `${input}\n`, () => {
-          console.log('\nLink appended to history document.');
+async function saveUserLinkToFile(input, destFile) {
+     await appendFile(destFile, `${input}\n`, () => { // try without await
+          console.log('Link appended to history document.\n');
      })
 }
 
-function createQRCode(input){
+async function createQRCode(link) {
+     return new Promise((resolve, reject) => {
 
-     const qrCode = qr.image(input, { type: 'png' }); // creates image data
-     const writeStream = fs.createWriteStream('qr-code.png');
-     qrCode.pipe(writeStream)
-     
-     writeStream.on("close", () => {
-          console.log("PNG saved!");
-     })
+          const qrCode = qrImage(link, { type: 'png' }); // creates image data
+          const writeStream = createWriteStream(`./generated-qr-codes/qr-code-${qrCodeCounter}.png`);
+          qrCode.pipe(writeStream)
+          qrCodeCounter++; // += 1
+
+          writeStream.on("close", () => {
+               console.log("PNG saved!");
+               resolve();
+          });
+
+          writeStream.on("error", (err) => {
+               console.log("Error saving PNG:", err);
+               reject(err);
+          });
+     });
 }
-
-main();
