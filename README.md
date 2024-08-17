@@ -1,14 +1,12 @@
 # QR Code Generator
 
-CLI tool to generate and save QR codes as `.png` files.
-
-The application allows users to input a URL via the command line, saves the URL to a text file, and generates a QR code image (in PNG format) from the URL.
+CLI tool to generate PNG QR Codes.
 
 ## Features
 
 - **User Input**: Prompts the user to enter a URL via the command line.
-- **Save URL**: Saves the entered URL to a text file (`user-input-history.txt`).
-- **Generate QR Code**: Generates a QR code image from the entered URL and saves it as a PNG file (`qr-code.png`).
+- **Save URL**: Saves the entered URL to a text file.
+- **Generate QR Code**: Generates a QR code image from the entered URL and saves it as a PNG file.
 
 ## Prerequisites
 
@@ -38,10 +36,12 @@ The application allows users to input a URL via the command line, saves the URL 
 
 2. When prompted, enter the URL you want to generate a QR code for.
 
-3. The URL will be saved to user-input-history.txt.
+3. The URL will be saved to `user-input-history.txt`.
 
-3. A QR code image will be generated and saved as qr-code.png in the project directory.
-Note: only the most recently generated image will be saved. If you generate multiple images, they will be overriden by the most recent one.
+3. A QR code image will be generated and saved in a `/generated-qr-codes` directory.
+4. The application runs on a loop, to generate multiple QR Codes.
+   
+⚠️ When stopping and re-running the application, subsequent QR code generations will replace the ones with the same file name. Working on a feature to generate new folders.
 
 
 ## Dependencies
