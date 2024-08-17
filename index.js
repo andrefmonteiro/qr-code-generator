@@ -3,10 +3,12 @@ import { appendFile, createWriteStream } from "fs";
 import { image as qrImage } from "qr-image";
 
 let qrCodeCounter = 1;
+const historyFile = "user-input-history.txt";
+
 
 while (true) {
      const userInputLink = await getUserInput();
-     await saveUserLinkToFile(userInputLink, "user-input-history.txt");
+     await saveUserLinkToFile(userInputLink, historyFile);
      await createQRCode(userInputLink);
 }
 
@@ -25,9 +27,9 @@ async function saveUserLinkToFile(input, destFile) {
 async function createQRCode(link) {
      return new Promise((resolve, reject) => {
 
-          const qrCode = qrImage(link, { type: 'png' }); // creates image data
+          const qrCodeImageData = qrImage(link, { type: 'png' }); // creates image data
           const writeStream = createWriteStream(`./generated-qr-codes/qr-code-${qrCodeCounter}.png`);
-          qrCode.pipe(writeStream)
+          qrCodeImageData.pipe(writeStream)
           qrCodeCounter++; // += 1
 
           writeStream.on("close", () => {
