@@ -10,7 +10,7 @@ CLI tool to generate PNG QR Codes.
 
 ## Prerequisites
 
-- **Node.js**: Make sure you have Node.js installed on your machine.
+- **Node.js**
 
 ## Installation
 
