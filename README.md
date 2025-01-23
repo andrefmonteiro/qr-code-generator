@@ -41,7 +41,7 @@ CLI tool to generate PNG QR Codes.
 3. A QR code image will be generated and saved in a `/generated-qr-codes` directory.
 4. The application runs on a loop, to generate multiple QR Codes.
    
-⚠️ When stopping and re-running the application, subsequent QR code generations will replace the ones with the same file name. Working on a feature to generate new folders.
+⚠️ When stopping and re-running the application, subsequent QR code generations will replace the ones with the same file name.
 
 
 ## Dependencies
